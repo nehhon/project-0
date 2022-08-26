@@ -13,9 +13,9 @@
 </head>
 <body>
 <header>WebGPU Report</header>
-<div id="nfo"></div>
+<div id="nfo">Loading</div>
 <script>
-(async ()=>{const adapter=await navigator.gpu.requestAdapter();let p=document.getElementById("nfo");for(let l in adapter.limits){let d=document.createElement("div");p.appendChild(d);d.textContent=l;d=document.createElement("div");p.appendChild(d);d.textContent=adapter.limits[l]}})()
+(async ()=>{let p=document.getElementById("nfo");if(!navigator.gpu)p.textContent="Your browser doesn't support WebGPU";const adapter=await navigator.gpu.requestAdapter();for(let l in adapter.limits){let d=document.createElement("div");p.appendChild(d);d.textContent=l;d=document.createElement("div");p.appendChild(d);d.textContent=adapter.limits[l]}})()
 </script>
 </body>
 </html>
